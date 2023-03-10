@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody playerRb;
     private GameObject focalPoint;
     public float speed = 5.0f;
+    public float pushStrength = 15.0f;
     public bool hasPowerUp = false;
     // Start is called before the first frame update
     void Start()
@@ -40,6 +41,9 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy") && hasPowerUp)
         {
+            Rigidbody enemyRigidbody = other.gameObject.GetComponent<Rigidbody>();
+            Vector3 pushEnemyAway = other.gameObject.transform.position - transform.position;
+            enemyRigidbody.AddForce(pushEnemyAway * pushStrength, ForceMode.Impulse);
             Debug.Log("Collided with " + other.gameObject.name);
         }
     }
