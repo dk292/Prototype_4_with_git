@@ -7,10 +7,22 @@ public class SpawnManager : MonoBehaviour
     public GameObject enemyPrefab;
     private float randomRange = 9.0f;
     public int enemyCount;
+    private int waveNumber = 1;
     // Start is called before the first frame update
     void Start()
     {
-        SpawnEnemyWave(3);
+        SpawnEnemyWave(waveNumber);
+    }
+
+    void Update()
+    {
+        enemyCount = FindObjectsOfType<Enemy>().Length;
+
+         if(enemyCount == 0)
+        {
+            waveNumber++;
+            SpawnEnemyWave(waveNumber);
+        }
     }
 
     void SpawnEnemyWave(int enemyToSpawn)
@@ -22,15 +34,6 @@ public class SpawnManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        enemyCount = FindObjectsOfType<Enemy>().Length;
-
-         if(enemyCount == 0)
-        {
-            SpawnEnemyWave(1);
-        }
-    }
 
     private Vector3 GenerateSpawnPosition()
     {
