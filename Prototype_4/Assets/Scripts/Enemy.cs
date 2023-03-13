@@ -18,11 +18,20 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         FollowThePlayer();
+        DestroyEnemy();
     }
 
     void FollowThePlayer()
     {
         Vector3 coordinate = (player.transform.position - transform.position).normalized;
         enemyRb.AddForce(coordinate * speed);
+    }
+
+    void DestroyEnemy()
+    {
+        if(transform.position.y < -10)
+        {
+            Destroy(gameObject);
+        }
     }
 }
