@@ -14,6 +14,8 @@ public class PlayerControllerX : MonoBehaviour
 
     private float normalStrength = 10; // how hard to hit enemy without powerup
     private float powerupStrength = 25; // how hard to hit enemy with powerup
+
+    public ParticleSystem particle;
     
     void Start()
     {
@@ -29,6 +31,8 @@ public class PlayerControllerX : MonoBehaviour
 
         // Set powerup indicator position to beneath player
         powerupIndicator.transform.position = transform.position + new Vector3(0, -0.6f, 0);
+
+        SpeedUp();
 
     }
 
@@ -50,6 +54,16 @@ public class PlayerControllerX : MonoBehaviour
         yield return new WaitForSeconds(powerUpDuration);
         hasPowerup = false;
         powerupIndicator.SetActive(false);
+    }
+
+    void SpeedUp()
+    {
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log("Space");
+            playerRb.AddForce(focalPoint.transform.forward * 700 * Time.deltaTime, ForceMode.Impulse);
+            particle.Play();
+        }
     }
 
     // If Player collides with enemy
