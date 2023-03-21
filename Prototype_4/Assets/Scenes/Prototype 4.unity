@@ -723,6 +723,10 @@ MonoBehaviour:
   hasPowerUp: 0
   speed: 3
   pushStrength: 15
+  hangTime: 4
+  smashSpeed: 2
+  explosionForce: 100
+  explosionRadius: 30
 --- !u!1 &1768983477
 GameObject:
   m_ObjectHideFlags: 0
@@ -758,6 +762,7 @@ MonoBehaviour:
   powerupPrefabs:
   - {fileID: 8051659090971080597, guid: 4579d6499809023498496b6be183fe2c, type: 3}
   - {fileID: 8051659090971080597, guid: bf146f785f35e254fa94b97643f54432, type: 3}
+  - {fileID: 7250535297632538533, guid: edab2703639708a45a5c2ce5ccdb6033, type: 3}
   enemyCount: 0
 --- !u!4 &1768983479
 Transform:
